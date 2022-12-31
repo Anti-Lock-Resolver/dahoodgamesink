@@ -17,9 +17,9 @@ local NotifyLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/vKh
         Enabled = true,
         Key = "q",
         DOT = true,
-        AIRSHOT = false,
+        AIRSHOT = true,
         NOTIF = true,
-        AUTOPRED = false,
+        AUTOPRED = true,
         FOV = math.huge,
         RESOVLER = false
     }
@@ -53,8 +53,8 @@ local PredictionValue = 0.1357363
         a.Size = UDim2.new(0, 0, 0, 0)
         end
         if Settings.rewrittenmain.DOT == true then
-        a.Transparency = 0
-        a.BackgroundTransparency = 0
+        a.Transparency = 1
+        a.BackgroundTransparency = 1
         else
         a.Transparency = 1
         a.BackgroundTransparency = 1
@@ -451,7 +451,7 @@ for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
 end
 end})
 PlayerMain4:AddButton({text = "Anti-Lock (n)", callback = function()
-    getgenv().UndergroundAmount = 55
+    getgenv().UndergroundAmount = 60
 
 local Toggled = false
 local KeyCode = 'n'
@@ -473,7 +473,7 @@ function AA1()
 game:GetService("RunService").heartbeat:Connect(function()
     if Toggled == true then
     local vel = game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity
-    game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(-30,         getgenv().UndergroundAmount,-30) 
+    game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(-35,         getgenv().UndergroundAmount,-35) 
     game:GetService("RunService").RenderStepped:Wait()
     game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = vel
     end
@@ -516,7 +516,7 @@ PlayerMain4:AddButton({text = "Anti-Lock Resolver", callback = function()
         Button1 = "TY!"
     })
 end)
-      local RunService = game:GetService("RunService")
+local RunService = game:GetService("RunService")
 
 RunService.Heartbeat:Connect(function()
     pcall(function()
@@ -524,7 +524,7 @@ RunService.Heartbeat:Connect(function()
             if v.Name ~= game.Players.LocalPlayer.Name then
                 local hrp = v.Character.HumanoidRootPart
                 hrp.Velocity = Vector3.new(0, 0, 0)
-                hrp.AssemblyLinearVelocity = Vector3.new(0, 0, 0)   
+                --hrp.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
             end
         end
     end)
@@ -1070,9 +1070,44 @@ end})
 local MiscMain2 = MiscColunm1:AddSection("Targeting")
 MiscMain2:AddDivider("Targeting")
 
-MiscMain2:AddBox({text = "Targets Name (Full Name)", skipflag = true, callback = function(value)
+MiscMain2:AddBox({text = "Targets Name", skipflag = true, callback = function(value)
 getgenv().Names = value
+print(value)
 end});
+
+MiscMain2:AddToggle{text = "View", flag = "ViewEnabled",callback = function(view)
+if view == true then    
+    StopFreecam()
+	local players = getPlayer(getgenv().Names)
+	for i,v in pairs(players) do
+		if viewDied then
+			viewDied:Disconnect()
+			viewChanged:Disconnect()
+		end
+		viewing = Players[v]
+		workspace.CurrentCamera.CameraSubject = viewing.Character
+		local function viewDiedFunc()
+			repeat wait() until Players[v].Character ~= nil and getRoot(Players[v].Character)
+			workspace.CurrentCamera.CameraSubject = viewing.Character
+		end
+		viewDied = Players[v].CharacterAdded:Connect(viewDiedFunc)
+		local function viewChangedFunc()
+			workspace.CurrentCamera.CameraSubject = viewing.Character
+		end
+		viewChanged = workspace.CurrentCamera:GetPropertyChangedSignal("CameraSubject"):Connect(viewChangedFunc)
+	end
+elseif view == false then
+    StopFreecam()
+	if viewing ~= nil then
+		viewing = nil
+	end
+	if viewDied then
+		viewDied:Disconnect()
+		viewChanged:Disconnect()
+	end
+	workspace.CurrentCamera.CameraSubject = view.Character
+    end
+end}
 
 MiscMain2:AddButton({text = "Teleport", callback = function(tele)
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[getgenv().Names].Character.HumanoidRootPart.CFrame * CFrame.new(0,0,3)
@@ -1117,11 +1152,11 @@ end})
 MiscMain3:AddButton({text = "Smg Ammo", callback = function()
         local plr = game.Players.LocalPlayer
 	local savedarmourpos = plr.Character.HumanoidRootPart.Position
-	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-814.76001, -42.5489998, -942.300049, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-582.523499, 5.47780275, -717.231323, -1, 0, 0, 0, 1, 0, 0, 0, -1)
 	wait(.2)
  
 	fireclickdetector(game.Workspace.Ignored.Shop['80 [SMG Ammo] - $60'].ClickDetector)
-		wait(.3)
+			wait(.3)
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedarmourpos)
 end})
 
