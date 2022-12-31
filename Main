@@ -451,7 +451,9 @@ for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
 end
 end})
 PlayerMain4:AddButton({text = "Anti-Lock (n)", callback = function()
-    getgenv().UndergroundAmount = 60
+getgenv().Y = 60
+getgenv().X = -35
+getgenv().Z = -35
 
 local Toggled = false
 local KeyCode = 'n'
@@ -473,7 +475,7 @@ function AA1()
 game:GetService("RunService").heartbeat:Connect(function()
     if Toggled == true then
     local vel = game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity
-    game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(-35,         getgenv().UndergroundAmount,-35) 
+    game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(getgenv().X, getgenv().Y, getgenv().Z)
     game:GetService("RunService").RenderStepped:Wait()
     game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = vel
     end
@@ -484,7 +486,9 @@ game:GetService('UserInputService').InputBegan:Connect(function(Key)
     if Key.KeyCode == Enum.KeyCode[KeyCode:upper()] and not game:GetService('UserInputService'):GetFocusedTextBox() then
         if Toggled then
             Toggled = false
-            getgenv().UndergroundAmount = 0
+            getgenv().Y = 0
+            getgenv().X = 0
+            getgenv().Z = 0
                                 game.StarterGui:SetCore("SendNotification", {
                     Title = "Off",
                     Text = "Anti-Lock is Off"
@@ -497,13 +501,16 @@ game:GetService('UserInputService').InputBegan:Connect(function(Key)
                 })
             while Toggled do
             AA1()
-            getgenv().UndergroundAmount = 50
             wait(0.5)
             end
         end
     end
 end)
 end})
+
+PlayerMain4:AddBox({text = "Anti Vectores", skipflag = true, callback = function(antis)
+getgenv().Y = antis getgenv().X = antis getgenv().Z = antis
+end});
 
 PlayerMain4:AddButton({text = "Anti-Lock Resolver", callback = function()
     pcall(function()
@@ -1072,42 +1079,7 @@ MiscMain2:AddDivider("Targeting")
 
 MiscMain2:AddBox({text = "Targets Name", skipflag = true, callback = function(value)
 getgenv().Names = value
-print(value)
 end});
-
-MiscMain2:AddToggle{text = "View", flag = "ViewEnabled",callback = function(view)
-if view == true then    
-    StopFreecam()
-	local players = getPlayer(getgenv().Names)
-	for i,v in pairs(players) do
-		if viewDied then
-			viewDied:Disconnect()
-			viewChanged:Disconnect()
-		end
-		viewing = Players[v]
-		workspace.CurrentCamera.CameraSubject = viewing.Character
-		local function viewDiedFunc()
-			repeat wait() until Players[v].Character ~= nil and getRoot(Players[v].Character)
-			workspace.CurrentCamera.CameraSubject = viewing.Character
-		end
-		viewDied = Players[v].CharacterAdded:Connect(viewDiedFunc)
-		local function viewChangedFunc()
-			workspace.CurrentCamera.CameraSubject = viewing.Character
-		end
-		viewChanged = workspace.CurrentCamera:GetPropertyChangedSignal("CameraSubject"):Connect(viewChangedFunc)
-	end
-elseif view == false then
-    StopFreecam()
-	if viewing ~= nil then
-		viewing = nil
-	end
-	if viewDied then
-		viewDied:Disconnect()
-		viewChanged:Disconnect()
-	end
-	workspace.CurrentCamera.CameraSubject = view.Character
-    end
-end}
 
 MiscMain2:AddButton({text = "Teleport", callback = function(tele)
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[getgenv().Names].Character.HumanoidRootPart.CFrame * CFrame.new(0,0,3)
