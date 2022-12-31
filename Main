@@ -1,6 +1,6 @@
 if getgenv().Obfuscater == true then
 if game.PlaceId == 2788229376 then
-loadstring(game:HttpGet('https://raw.githubusercontent.com/TrojanHorseexe/www/main/dawd'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Anti-Lock-Resolver/lib/main/MainLib'))()
 -- [Aim Tab UI] ------------------------------------------------------------------------------------------------------------------------------------------------------------
 local AimTab = library:AddTab("Aim"); 
 local AimColoum = AimTab:AddColumn();
