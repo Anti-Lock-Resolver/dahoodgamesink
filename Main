@@ -1,3 +1,5 @@
+getgenv().Obfuscater = true
+
 if getgenv().Obfuscater == true then
 if game.PlaceId == 2788229376 then
 loadstring(game:HttpGet('https://raw.githubusercontent.com/TrojanHorseexe/www/main/dawd'))()
@@ -17,9 +19,9 @@ local NotifyLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/vKh
         Enabled = true,
         Key = "q",
         DOT = true,
-        AIRSHOT = true,
+        AIRSHOT = false,
         NOTIF = true,
-        AUTOPRED = true,
+        AUTOPRED = false,
         FOV = math.huge,
         RESOVLER = false
     }
@@ -53,8 +55,8 @@ local PredictionValue = 0.1357363
         a.Size = UDim2.new(0, 0, 0, 0)
         end
         if Settings.rewrittenmain.DOT == true then
-        a.Transparency = 1
-        a.BackgroundTransparency = 1
+        a.Transparency = 0
+        a.BackgroundTransparency = 0
         else
         a.Transparency = 1
         a.BackgroundTransparency = 1
@@ -1070,10 +1072,13 @@ end})
 local MiscMain2 = MiscColunm1:AddSection("Targeting")
 MiscMain2:AddDivider("Targeting")
 
-MiscMain2:AddBox({text = "Targets Name", skipflag = true, callback = function(value)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[value].Character.HumanoidRootPart.CFrame * CFrame.new(0,0,3)
-
+MiscMain2:AddBox({text = "Targets Name (Full Name)", skipflag = true, callback = function(value)
+getgenv().Names = value
 end});
+
+MiscMain2:AddButton({text = "Teleport", callback = function(tele)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[getgenv().Names].Character.HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+end})
 
 local MiscColunm2 = MiscTab:AddColumn();
 local MiscMain3 = MiscColunm2:AddSection("Ammo")
@@ -1114,11 +1119,11 @@ end})
 MiscMain3:AddButton({text = "Smg Ammo", callback = function()
         local plr = game.Players.LocalPlayer
 	local savedarmourpos = plr.Character.HumanoidRootPart.Position
-	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-582.523499, 5.47780275, -717.231323, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-814.76001, -42.5489998, -942.300049, -1, 0, 0, 0, 1, 0, 0, 0, -1)
 	wait(.2)
  
 	fireclickdetector(game.Workspace.Ignored.Shop['80 [SMG Ammo] - $60'].ClickDetector)
-			wait(.3)
+		wait(.3)
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedarmourpos)
 end})
 
