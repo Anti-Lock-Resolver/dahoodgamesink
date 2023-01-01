@@ -16,7 +16,7 @@ local NotifyLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/vKh
         rewrittenmain = {
         Enabled = true,
         Key = "q",
-        DOT = false,
+        DOT = true,
         AIRSHOT = false,
         NOTIF = true,
         AUTOPRED = true,
@@ -505,13 +505,8 @@ game:GetService('UserInputService').InputBegan:Connect(function(Key)
 end)
 end})
 
-PlayerMain4:AddToggle{text = "Resolver", flag = "ResolverpEnabled",callback = function(res)
-    getgenv().resolver = true
-    if res == false then
-    getgenv().resolver = false
-elseif res == true then
-    getgenv().resolver = true
-    local RunService = game:GetService("RunService")
+PlayerMain4:AddButton({text = "Resolver", callback = function()
+local RunService = game:GetService("RunService")
 
 RunService.Heartbeat:Connect(function()
     pcall(function()
@@ -523,8 +518,7 @@ RunService.Heartbeat:Connect(function()
         end
     end)
 end)
-end
-end}
+end})
 
 PlayerMain4:AddToggle{text = "Anti-Stomp", flag = "AntiStompEnabled",callback = function(x)
      if x == true then
