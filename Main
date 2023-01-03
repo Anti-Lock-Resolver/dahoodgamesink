@@ -552,7 +552,9 @@ game:GetService('UserInputService').InputBegan:Connect(function(Key)
 end)
 end})
 
-PlayerMain4:AddButton({text = "Resolver", callback = function()
+PlayerMain4:AddBox({text = "Resolve: (Persons Name)", skipflag = true, callback = function(value)
+
+if game.Players[value] then
 local RunService = game:GetService("RunService")
 
 RunService.Heartbeat:Connect(function()
@@ -565,6 +567,7 @@ RunService.Heartbeat:Connect(function()
         end
     end)
 end)
+end
 end})
 
 PlayerMain4:AddToggle{text = "Anti-Stomp", flag = "AntiStompEnabled",callback = function(x)
