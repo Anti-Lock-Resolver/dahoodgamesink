@@ -585,16 +585,12 @@ end)
 end})
 
 PlayerMain4:AddBox({text = "Resolve: (Persons Name)", skipflag = true, callback = function(speaker)
-local foundplayer = game:GetService('Players'):FindFirstChild(speaker)
-if foundplayer then
-getgenv().Target = speaker
-end
-if game.Players[getgenv().Target] then
+if game.Players[speaker] then
 local RunService = game:GetService("RunService")
 
 RunService.Heartbeat:Connect(function()
     pcall(function()
-        for i,v in pairs(game.Players:GetChildren()) do
+        for i,v in pairs(game.Players[speaker]) do
             if v.Name ~= game.Players.LocalPlayer.Name then
                 local hrp = v.Character.HumanoidRootPart
                 hrp.Velocity = Vector3.new(0, 0, 0)
