@@ -91,7 +91,7 @@ AimMain:AddButton({text = "Lock (Q)", callback = function()
     
     getgenv().makemarker = function(Parent, Adornee, Color, Size, Size2)
         local e = Instance.new("BillboardGui", Parent)
-        e.Name = "PP"
+        e.Name = "Sec"
         e.Adornee = Adornee
         e.Size = UDim2.new(Size, Size2, Size, Size2)
         e.AlwaysOnTop = true
@@ -110,7 +110,7 @@ AimMain:AddButton({text = "Lock (Q)", callback = function()
         repeat
             wait()
         until player.Character
-        local handler = makemarker(guimain, player.Character:WaitForChild(_G.PART), Color3.fromRGB(255, 255, 255), 0.0, 0)
+        local handler = makemarker(guimain, player.Character:WaitForChild(_G.PART), Color3.fromRGB(238,130,238), 0.0, 0)
         handler.Name = player.Name
         player.CharacterAdded:connect(
             function(Char)
@@ -165,7 +165,7 @@ AimMain:AddButton({text = "Lock (Q)", callback = function()
             placemarker.CanCollide = false
             placemarker.Size = Vector3.new(0.1, 0.1, 0.1)
             placemarker.Transparency = _G.SHIT
-            makemarker(placemarker, placemarker, Color3.fromRGB(255, 255, 255), 0.20, 0)
+            makemarker(placemarker, placemarker, Color3.fromRGB(238,130,238), 0.20, 0)
         end
     )
     
@@ -278,33 +278,6 @@ AimMain:AddButton({text = "Lock (Q)", callback = function()
             _G.Frame = Vector3.new(0,0.0,0)
             _G.AIR = -0.5
             _G.SHIT = 1
-    
-    
-            end
-        end
-    )
-    
-    
-    
-    game.Players.LocalPlayer.Chatted:Connect(
-        function(Chat)
-            if Chat == "P+" then
-    
-    
-                _G.PRED = _G.PRED+0.001
-    
-    
-    
-            end
-        end
-    )
-    
-    game.Players.LocalPlayer.Chatted:Connect(
-        function(Chat)
-            if Chat == "P-" then
-    
-                _G.PRED = _G.PRED-0.001
-    
     
     
             end
