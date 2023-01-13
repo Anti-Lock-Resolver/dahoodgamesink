@@ -65,17 +65,18 @@ local function gplr(String)
 	return Found 
 end
 
--- [Aim Tab UI] ------------------------------------------------------------------------------------------------------------------------------------------------------------
-local AimTab = library:AddTab("Aim"); 
-local AimColoum = AimTab:AddColumn();
-local AimMain = AimColoum:AddSection("AimLock")
+-- [Player Tab UI] ------------------------------------------------------------------------------------------------------------------------------------------------------------
+local PlayerTab = library:AddTab("Player");
 
-AimMain:AddDivider("Main");
+local PlayerColunm1 = PlayerTab:AddColumn();
 
-AimMain:AddButton({text = "Lock (Q)", callback = function()
+local AimSec = PlayerColunm1:AddSection("Aim")
+AimSec:AddDivider("Lock")
+
+_G.PRED = 0.037
+AimSec:AddButton({text = "Lock (Q)", callback = function()
  _G.KEY = "q"
     _G.PART = "HumanoidRootPart"
-    _G.PRED = 0.037
     _G.Frame = Vector3.new(0,0.53,0)
     _G.AIR = -0.5
     _G.SHIT = 0.1
@@ -320,14 +321,12 @@ AimMain:AddButton({text = "Lock (Q)", callback = function()
      accomidationfactor = PingNumber / 1000 + _G.PRED
     end
 end})
+AimSec:AddBox({text = "Lock Prediction (0.037)", skipflag = true,callback = function(value)
+    _G.PRED = value
+end})
 
--- [Player Tab UI] ------------------------------------------------------------------------------------------------------------------------------------------------------------
-local PlayerTab = library:AddTab("Player");
-
-local PlayerColunm1 = PlayerTab:AddColumn();
 local PlayerMain2 = PlayerColunm1:AddSection("Jump Control")
 PlayerMain2:AddDivider("Jump Things")
-
 
 PlayerMain2:AddButton({text = "Inf Jump", callback = function()
 local Player = game:GetService'Players'.LocalPlayer;
@@ -1230,9 +1229,9 @@ TpsMain23:AddButton({text = "Train", callback = function()
 end})
 
 -- [Buy Tab UI] ------------------------------------------------------------------------------------------------------------------------------------------------------------
-local TpBuyTab = library:AddTab("Buy"); 
-local TpsMain2 = TpBuyTab:AddColumn();
-local TpsMain1 = TpsColunm1:AddSection("Auto-Buys")
+local BuyTab = library:AddTab("Buy"); 
+local BuyColunm1 = BuyTab:AddColumn();
+local TpsMain2 = BuyColunm1:AddSection("Auto-Buy")
 
 TpsMain2:AddDivider("Guns")
 
@@ -1381,9 +1380,11 @@ TpsMain2:AddButton({text = "Milk", callback = function()
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedarmourpos)
 end})
 
-TpsMain2:AddDivider("Other")
+ 
+local BuyColunm2 = BuyTab:AddColumn();
+local TpsMain3 = BuyColunm2:AddSection("Auto-Buy")
 
-TpsMain2:AddButton({text = "HeavyArmor", callback = function()
+TpsMain3:AddButton({text = "HeavyArmor", callback = function()
     local plr = game.Players.LocalPlayer
 	local savedarmourpos = plr.Character.HumanoidRootPart.Position
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-934.025024, -28.149828, 570.549683, 1, 0, 0, 0, 1, 0, 0, 0, 1)
@@ -1394,7 +1395,7 @@ TpsMain2:AddButton({text = "HeavyArmor", callback = function()
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedarmourpos)
 end})
 
-TpsMain2:AddButton({text = "BreathingMask", callback = function()
+TpsMain3:AddButton({text = "BreathingMask", callback = function()
     local plr = game.Players.LocalPlayer
 	local savedarmourpos = plr.Character.HumanoidRootPart.Position
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-55.5208168, 19.749939, -84.2150803, -3.57627869e-07, 0.000610389397, 0.999999762, 0.00195324328, 0.999997914, -0.000610387418, -0.999998093, 0.00195324281, -1.54972076e-06)
@@ -1405,7 +1406,7 @@ TpsMain2:AddButton({text = "BreathingMask", callback = function()
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedarmourpos)
 end})
 
-TpsMain2:AddButton({text = "Bag", callback = function()
+TpsMain3:AddButton({text = "Bag", callback = function()
     local plr = game.Players.LocalPlayer
 	local savedarmourpos = plr.Character.HumanoidRootPart.Position
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-316.034454, 48.2788467, -723.860474, 0.983254969, -0.000297372608, -0.182234928, 0.000218386791, 0.999999881, -0.000453495246, 0.182235047, 0.000406103791, 0.98325491)
@@ -1416,7 +1417,7 @@ TpsMain2:AddButton({text = "Bag", callback = function()
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedarmourpos)
 end})
 
-TpsMain2:AddButton({text = "Pencil", callback = function()
+TpsMain3:AddButton({text = "Pencil", callback = function()
     local plr = game.Players.LocalPlayer
 	local savedarmourpos = plr.Character.HumanoidRootPart.Position
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-681.125, 18.9749966, 340.000031, 0, 0, 1, 0, 1, -0, -1, 0, 0)
@@ -1427,7 +1428,7 @@ TpsMain2:AddButton({text = "Pencil", callback = function()
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedarmourpos)
 end})
 
-TpsMain2:AddButton({text = "Key", callback = function()
+TpsMain3:AddButton({text = "Key", callback = function()
     local plr = game.Players.LocalPlayer
 	local savedarmourpos = plr.Character.HumanoidRootPart.Position
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-270.790039, 18.8496323, -238.819885, -1, 0, 0, 0, 1, 0, 0, 0, -1)
