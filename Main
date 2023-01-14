@@ -70,11 +70,11 @@ local PlayerTab = library:AddTab("Player");
 
 local PlayerColunm1 = PlayerTab:AddColumn();
 
-local AimSec = PlayerColunm1:AddSection("Aim")
-AimSec:AddDivider("Lock")
+local Aim = PlayerColunm1:AddSection("Aim")
+Aim:AddDivider("Lock")
 
 _G.PRED = 0.037
-AimSec:AddButton({text = "Lock (Q)", callback = function()
+Aim:AddButton({text = "Lock (Q)", callback = function()
  _G.KEY = "q"
     _G.PART = "HumanoidRootPart"
     _G.Frame = Vector3.new(0,0.53,0)
@@ -321,7 +321,8 @@ AimSec:AddButton({text = "Lock (Q)", callback = function()
      accomidationfactor = PingNumber / 1000 + _G.PRED
     end
 end})
-AimSec:AddBox({text = "Lock Prediction (0.037)", skipflag = true,callback = function(value)
+
+Aim:AddBox({text = "Lock Prediction (0.037)", skipflag = true,callback = function(value)
     _G.PRED = value
 end})
 
@@ -1241,7 +1242,7 @@ TpsMain2:AddButton({text = "Db", callback = function()
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-1039.59985, 18.8513641, -256.449951, -1, 0, 0, 0, 1, 0, 0, 0, -1)
 	wait(.2)
  
-	fireclickdetector(game.Workspace.Ignored.Shop['[Double-Barrel SG] - $1400'].ClickDetector)
+	fireclickdetector(game.Workspace.Ignored.Shop['[Double-Barrel SG] - $1442'].ClickDetector)
 	wait(.1)
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedarmourpos)
 end})
@@ -1249,10 +1250,10 @@ end})
 TpsMain2:AddButton({text = "Rev", callback = function()
     local plr = game.Players.LocalPlayer
 	local savedarmourpos = plr.Character.HumanoidRootPart.Position
-	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-638.75, 18.8500004, -118.175011, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-868.005005, -35.549202, -529.420044, -1, 0, 0, 0, 1, 0, 0, 0, -1)
 	wait(.2)
  
-	fireclickdetector(game.Workspace.Ignored.Shop['[Revolver] - $1300'].ClickDetector)
+	fireclickdetector(game.Workspace.Ignored.Shop['[Revolver] - $1339'].ClickDetector)
 	wait(.1)
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedarmourpos)
 end})
@@ -1260,10 +1261,10 @@ end})
 TpsMain2:AddButton({text = "SMG", callback = function()
     local plr = game.Players.LocalPlayer
 	local savedarmourpos = plr.Character.HumanoidRootPart.Position
-	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-810.01001, -42.5489998, -942.300049, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-577.123413, 5.47666788, -718.031433, -1, 0, 0, 0, 1, 0, 0, 0, -1)
 	wait(.2)
  
-	fireclickdetector(game.Workspace.Ignored.Shop['[SMG] - $750'].ClickDetector)
+	fireclickdetector(game.Workspace.Ignored.Shop['[SMG] - $773'].ClickDetector)
 	wait(.1)
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedarmourpos)
 end})
@@ -1274,7 +1275,7 @@ TpsMain2:AddButton({text = "TacShotgun", callback = function()
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(470.877533, 45.1272316, -620.630676, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 	wait(.2)
  
-	fireclickdetector(game.Workspace.Ignored.Shop['[TacticalShotgun] - $1750'].ClickDetector) 
+	fireclickdetector(game.Workspace.Ignored.Shop['[TacticalShotgun] - $1803'].ClickDetector) 
 	wait(.1)
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedarmourpos)
 end})
@@ -1285,7 +1286,7 @@ TpsMain2:AddButton({text = "P90", callback = function()
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(463.777466, 45.1318016, -619.130493, 0, 0, 1, 0, 1, -0, -1, 0, 0)
 	wait(.2)
  
-	fireclickdetector(game.Workspace.Ignored.Shop['[P90] - $1000'].ClickDetector) 
+	fireclickdetector(game.Workspace.Ignored.Shop['[P90] - $1030'].ClickDetector) 
 	wait(.1)
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedarmourpos)
 end})
@@ -1296,7 +1297,7 @@ TpsMain2:AddButton({text = "AUG", callback = function()
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-273.048187, 49.3634033, -213.312408, -1, 0, 0, 0, 1, -8.63220121e-05, -0, -8.63220121e-05, -1)
 	wait(.2)
  
-	fireclickdetector(game.Workspace.Ignored.Shop['[AUG] - $1950'].ClickDetector) 
+	fireclickdetector(game.Workspace.Ignored.Shop['[AUG] - $2009'].ClickDetector) 
 	wait(.1)
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedarmourpos)
 end})
@@ -1304,10 +1305,10 @@ end})
 TpsMain2:AddButton({text = "Shotgun", callback = function()
     local plr = game.Players.LocalPlayer
 	local savedarmourpos = plr.Character.HumanoidRootPart.Position
-	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-805.010071, -42.5478363, -942.299988, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-861.314636, -35.5483894, -529.630554, -1, 0, 0, 0, 1, 0, 0, 0, -1)
 	wait(.2)
  
-	fireclickdetector(game.Workspace.Ignored.Shop['[Shotgun] - $1250'].ClickDetector) 
+	fireclickdetector(game.Workspace.Ignored.Shop['[Shotgun] - $1288'].ClickDetector) 
 	wait(.1)
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedarmourpos)
 end})
@@ -1318,7 +1319,7 @@ TpsMain2:AddButton({text = "RPG", callback = function()
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-794.814697, -42.5468521, -932.97998, 0, 0, 1, 0, 1, -0, -1, 0, 0)
 	wait(.2)
  
-	fireclickdetector(game.Workspace.Ignored.Shop['[RPG] - $6000'].ClickDetector) 
+	fireclickdetector(game.Workspace.Ignored.Shop['[RPG] - $6180'].ClickDetector) 
 	wait(.1)
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedarmourpos)
 end})
@@ -1380,22 +1381,20 @@ TpsMain2:AddButton({text = "Milk", callback = function()
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedarmourpos)
 end})
 
- 
-local BuyColunm2 = BuyTab:AddColumn();
-local TpsMain3 = BuyColunm2:AddSection("Auto-Buy")
+TpsMain2:AddDivider("Other")
 
-TpsMain3:AddButton({text = "HeavyArmor", callback = function()
+TpsMain2:AddButton({text = "HeavyArmor", callback = function()
     local plr = game.Players.LocalPlayer
 	local savedarmourpos = plr.Character.HumanoidRootPart.Position
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-934.025024, -28.149828, 570.549683, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 	wait(.2)
  
-	fireclickdetector(game.Workspace.Ignored.Shop['[High-Medium Armor] - $2300'].ClickDetector)
+	fireclickdetector(game.Workspace.Ignored.Shop['[High-Medium Armor] - $2369'].ClickDetector)
 	wait(.1)
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedarmourpos)
 end})
 
-TpsMain3:AddButton({text = "BreathingMask", callback = function()
+TpsMain2:AddButton({text = "BreathingMask", callback = function()
     local plr = game.Players.LocalPlayer
 	local savedarmourpos = plr.Character.HumanoidRootPart.Position
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-55.5208168, 19.749939, -84.2150803, -3.57627869e-07, 0.000610389397, 0.999999762, 0.00195324328, 0.999997914, -0.000610387418, -0.999998093, 0.00195324281, -1.54972076e-06)
@@ -1406,7 +1405,7 @@ TpsMain3:AddButton({text = "BreathingMask", callback = function()
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedarmourpos)
 end})
 
-TpsMain3:AddButton({text = "Bag", callback = function()
+TpsMain2:AddButton({text = "Bag", callback = function()
     local plr = game.Players.LocalPlayer
 	local savedarmourpos = plr.Character.HumanoidRootPart.Position
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-316.034454, 48.2788467, -723.860474, 0.983254969, -0.000297372608, -0.182234928, 0.000218386791, 0.999999881, -0.000453495246, 0.182235047, 0.000406103791, 0.98325491)
@@ -1417,24 +1416,24 @@ TpsMain3:AddButton({text = "Bag", callback = function()
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedarmourpos)
 end})
 
-TpsMain3:AddButton({text = "Pencil", callback = function()
+TpsMain2:AddButton({text = "Pencil", callback = function()
     local plr = game.Players.LocalPlayer
 	local savedarmourpos = plr.Character.HumanoidRootPart.Position
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-681.125, 18.9749966, 340.000031, 0, 0, 1, 0, 1, -0, -1, 0, 0)
 	wait(.2)
  
-	fireclickdetector(game.Workspace.Ignored.Shop['[Pencil] - $175'].ClickDetector)
+	fireclickdetector(game.Workspace.Ignored.Shop['[Pencil] - $180'].ClickDetector)
 	wait(.1)
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedarmourpos)
 end})
 
-TpsMain3:AddButton({text = "Key", callback = function()
+TpsMain2:AddButton({text = "Key", callback = function()
     local plr = game.Players.LocalPlayer
 	local savedarmourpos = plr.Character.HumanoidRootPart.Position
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(-270.790039, 18.8496323, -238.819885, -1, 0, 0, 0, 1, 0, 0, 0, -1)
 	wait(.2)
  
-	fireclickdetector(game.Workspace.Ignored.Shop['[Key] - $125'].ClickDetector)
+	fireclickdetector(game.Workspace.Ignored.Shop['[Key] - $129'].ClickDetector)
 	wait(.1)
 	plr.Character.HumanoidRootPart.CFrame = CFrame.new(savedarmourpos)
 end})
